@@ -323,7 +323,7 @@ extern bool umm_multi_integrity_check(struct umm_heap_config *heap);
 extern bool umm_integrity_check(void);
 #define INTEGRITY_CHECK() umm_integrity_check()
 extern void umm_corruption(void);
-#define UMM_HEAP_CORRUPTION_CB() printf("Heap Corruption!")
+#define UMM_HEAP_CORRUPTION_CB() printf("Heap Corruption!\n")
 #else
 #define INTEGRITY_CHECK() (1)
 #endif
@@ -383,12 +383,13 @@ extern bool  umm_poison_check(void);
  * #include "dbglog.h"
  */
 
+#if DBGLOG_LEVEL == 0
 #define DBGLOG_TRACE(format, ...)
 #define DBGLOG_DEBUG(format, ...)
 #define DBGLOG_CRITICAL(format, ...)
 #define DBGLOG_ERROR(format, ...)
 #define DBGLOG_WARNING(format, ...)
 #define DBGLOG_INFO(format, ...)
-#define DBGLOG_FORCE(format, ...)
+#endif
 
 #endif /* _UMM_MALLOC_CFG_H */
